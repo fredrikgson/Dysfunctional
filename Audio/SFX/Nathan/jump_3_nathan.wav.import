@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/jump_3_nathan.wav-e5c236d4687ba2c42183ce98d55fb648.sample"
+
+[deps]
+
+source_file="res://Audio/SFX/Nathan/jump_3_nathan.wav"
+dest_files=[ "res://.import/jump_3_nathan.wav-e5c236d4687ba2c42183ce98d55fb648.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

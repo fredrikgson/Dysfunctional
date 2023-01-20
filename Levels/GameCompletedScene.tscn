@@ -1,0 +1,109 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Graphics/UI/end_screen.png" type="Texture" id=1]
+[ext_resource path="res://Font/m3x6.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Graphics/UI/end_text.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/GameCompletedScene.gd" type="Script" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "FadeInScene"
+length = 8.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 0.784584, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CenterContainer/VBoxContainer/TEEND:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3, 6 ),
+"transitions": PoolRealArray( 1, 0.594604, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CenterContainer/VBoxContainer/TH¤PLA:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 6, 8 ),
+"transitions": PoolRealArray( 1, 0.63728, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 2 )
+
+[node name="GameCompletedScene" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 1, 1, 1, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+autoplay = "FadeInScene"
+anims/FadeInScene = SubResource( 1 )
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer"]
+margin_left = 109.0
+margin_top = 70.0
+margin_right = 211.0
+margin_bottom = 109.0
+
+[node name="TEEND" type="CenterContainer" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+margin_right = 102.0
+margin_bottom = 22.0
+
+[node name="The End" type="TextureRect" parent="CanvasLayer/CenterContainer/VBoxContainer/TEEND"]
+margin_left = 9.0
+margin_right = 93.0
+margin_bottom = 22.0
+texture = ExtResource( 3 )
+
+[node name="TH¤PLA" type="CenterContainer" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+margin_top = 26.0
+margin_right = 102.0
+margin_bottom = 39.0
+
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer/TH¤PLA"]
+margin_right = 102.0
+margin_bottom = 13.0
+custom_fonts/font = SubResource( 2 )
+text = "- Thank you for playing -"
+align = 1

@@ -1,0 +1,127 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Graphics/Characters/white_father_sprites.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Benjamin.gd" type="Script" id=2]
+[ext_resource path="res://Graphics/Misc/selection_arrow.png" type="Texture" id=3]
+[ext_resource path="res://Audio/SFX/Benjamin/walk_benjamin.wav" type="AudioStream" id=4]
+[ext_resource path="res://Audio/SFX/Benjamin/jump_1_benjamin.wav" type="AudioStream" id=5]
+[ext_resource path="res://Audio/SFX/Benjamin/jump_2_benjamin.wav" type="AudioStream" id=6]
+[ext_resource path="res://Audio/SFX/Benjamin/jump_3_benjamin.wav" type="AudioStream" id=7]
+[ext_resource path="res://Objects/Characters/ASPJump.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Objects/Characters/JumpParticles.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Audio/SFX/Benjamin/select_benjamin.wav" type="AudioStream" id=10]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 0.983942
+height = 9.82533
+
+[sub_resource type="Animation" id=2]
+resource_name = "Idle"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Jump"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Run"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 3, 4, 3 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Idle"
+length = 1.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, -12 ), Vector2( 0.5, -14 ), Vector2( 0.5, -12 ) ]
+}
+
+[node name="Benjamin" type="KinematicBody2D" groups=[
+"FamilyMember",
+]]
+collision_mask = 2
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 6
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 2.1 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
+anims/Idle = SubResource( 2 )
+anims/Jump = SubResource( 3 )
+anims/Run = SubResource( 4 )
+
+[node name="SelectionArrow" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0.5, -14 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SelectionArrow"]
+autoplay = "Idle"
+anims/Idle = SubResource( 5 )
+
+[node name="ASPWalking" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -12.0
+
+[node name="ASPJump" parent="." instance=ExtResource( 8 )]
+volume_db = -6.0
+jump_sounds = [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ]
+
+[node name="JumpParticles" parent="." instance=ExtResource( 9 )]
+
+[node name="ASPSelect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -8.0

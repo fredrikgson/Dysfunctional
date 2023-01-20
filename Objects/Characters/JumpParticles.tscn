@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -3.4504, 0.0, 0, 0 ]
+
+[node name="JumpParticles" type="CPUParticles2D"]
+self_modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( 0, 8 )
+emitting = false
+amount = 4
+one_shot = true
+explosiveness = 1.0
+local_coords = false
+emission_shape = 1
+emission_sphere_radius = 2.0
+direction = Vector2( 1, 10 )
+spread = 30.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 25.0
+scale_amount_curve = SubResource( 1 )

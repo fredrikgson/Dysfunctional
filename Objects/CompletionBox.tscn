@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Graphics/Misc/smooth_light.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/CompletionBox.gd" type="Script" id=2]
+
+[node name="CompletionBox" type="Area2D"]
+script = ExtResource( 2 )
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 1 )
+texture_scale = 0.1
+color = Color( 1, 0.623529, 0.0352941, 1 )
+[connection signal="body_entered" from="." to="." method="_on_CompletionBox_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_CompletionBox_body_exited"]

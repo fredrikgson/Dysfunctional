@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/stone_panel_trigger.wav-a6b1b00d54b2f676b662096b3ce5780d.sample"
+
+[deps]
+
+source_file="res://Audio/SFX/stone_panel_trigger.wav"
+dest_files=[ "res://.import/stone_panel_trigger.wav-a6b1b00d54b2f676b662096b3ce5780d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

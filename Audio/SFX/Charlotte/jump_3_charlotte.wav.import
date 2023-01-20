@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/jump_3_charlotte.wav-68ef8668189ad6e682196c23cc7c2e8a.sample"
+
+[deps]
+
+source_file="res://Audio/SFX/Charlotte/jump_3_charlotte.wav"
+dest_files=[ "res://.import/jump_3_charlotte.wav-68ef8668189ad6e682196c23cc7c2e8a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
